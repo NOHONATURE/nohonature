@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — NOHO NATURE</title>
+  <meta name="description" content="Get in touch with NOHO NATURE LLC for wholesale, distribution, and retail partnership inquiries. Based in Los Angeles, CA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #EFE7D8;
+      --red:      #701A24;
+      --gold:     #C9A961;
+      --sage:     #6B7A5A;
+      --charcoal: #2A2724;
+      --serif:    'Cormorant Garamond', Georgia, serif;
+      --sans:     'Jost', system-ui, sans-serif;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--charcoal);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { color: inherit; text-decoration: none; }
+
+
+    /* ─── Header ────────────────────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--cream);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .wordmark {
+      display: flex;
+      align-items: center;
+      color: var(--charcoal);
+    }
+
+    .wordmark svg {
+      height: 78px;
+      width: auto;
+      display: block;
+    }
+
+    nav { display: flex; gap: 2.5rem; }
+
+    nav a {
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      transition: color 0.2s;
+    }
+
+    nav a:hover,
+    nav a[aria-current="page"] { color: var(--red); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--charcoal); }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: var(--cream);
+      border-bottom: 1px solid var(--gold);
+      padding: 1.5rem 2rem;
+      gap: 1.25rem;
+    }
+
+    .mobile-nav a {
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .mobile-nav.open { display: flex; }
+
+
+    /* ─── Scroll bar ─────────────────────────────────────────────── */
+    .scroll-bar {
+      position: fixed;
+      top: 88px;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(to right, var(--red), var(--gold));
+      z-index: 200;
+      pointer-events: none;
+      transition: width 0.05s linear;
+    }
+
+
+    /* ─── Page intro ─────────────────────────────────────────────── */
+    .page-intro {
+      text-align: center;
+      padding: 4rem 2rem 3.5rem;
+      border-bottom: 1px solid var(--gold);
+    }
+
+    .page-intro h1 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      letter-spacing: 0.02em;
+      line-height: 1.0;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+    }
+
+    .page-intro p {
+      font-size: 0.8rem;
+      opacity: 0.6;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+
+    /* ─── Botanical mark divider ────────────────────────────────── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      padding: 0;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    .divider-mark {
+      height: 44px;
+      width: auto;
+      margin: 0 1.75rem;
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+
+
+    /* ─── Contact layout ─────────────────────────────────────────── */
+    .contact-body {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 2rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 0 5rem;
+      align-items: start;
+    }
+
+    .contact-divider-v {
+      width: 1px;
+      background: var(--gold);
+      opacity: 0.4;
+      align-self: stretch;
+    }
+
+
+    /* ─── Contact details (left) ─────────────────────────────────── */
+    .contact-details {
+      padding-right: 2rem;
+    }
+
+    .contact-details h2 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.02em;
+    }
+
+    .contact-details .detail-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      opacity: 0.5;
+      margin-top: 2.25rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-details .detail-value {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    .contact-details .detail-value a {
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 1px;
+      transition: color 0.2s;
+    }
+
+    .contact-details .detail-value a:hover {
+      color: var(--red);
+    }
+
+    .detail-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin-top: 3rem;
+      opacity: 0.6;
+    }
+
+
+    /* ─── Inquiry form (right) ───────────────────────────────────── */
+    .contact-form-wrap {
+      padding-left: 2rem;
+    }
+
+    .form-note {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      opacity: 0.55;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 2.5rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2.25rem;
+    }
+
+    .field label {
+      font-size: 0.66rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      opacity: 0.5;
+      margin-bottom: 0.5rem;
+    }
+
+    .field input,
+    .field textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--gold);
+      border-radius: 0;
+      outline: none;
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      padding: 0.4rem 0 0.6rem;
+      width: 100%;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: var(--charcoal);
+      opacity: 0.3;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-bottom-color: var(--charcoal);
+    }
+
+    .field textarea {
+      resize: none;
+      height: 100px;
+      line-height: 1.65;
+    }
+
+    .field-message {
+      margin-bottom: 2.75rem;
+    }
+
+    .btn-submit {
+      display: inline-block;
+      padding: 0.8rem 2.25rem;
+      border: 1px solid var(--charcoal);
+      color: var(--charcoal);
+      background: transparent;
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s, border-color 0.25s;
+      align-self: flex-start;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--charcoal);
+      color: var(--cream);
+    }
+
+
+    /* ─── Wholesale Band ───────────────────────────────────────── */
+    .wholesale {
+      background-color: var(--red);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .wholesale h2 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: var(--cream);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.02em;
+    }
+
+    .wholesale p {
+      font-size: 0.85rem;
+      color: var(--cream);
+      opacity: 0.7;
+      margin-bottom: 2.25rem;
+      letter-spacing: 0.06em;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 0.8rem 2.25rem;
+      border: 1px solid var(--gold);
+      color: var(--cream);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .btn-outline:hover {
+      background-color: var(--gold);
+      color: var(--charcoal);
+    }
+
+
+
+    /* ─── Footer ───────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--gold);
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-wordmark {
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 0.75rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .footer-info {
+      font-size: 0.75rem;
+      color: var(--charcoal);
+      opacity: 0.6;
+      line-height: 1.9;
+      text-align: right;
+    }
+
+    .footer-info a {
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 1px;
+    }
+
+    .footer-info a:hover { color: var(--red); }
+
+
+    /* ─── Responsive ─────────────────────────────────────────────── */
+    @media (max-width: 800px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+
+      .contact-body {
+        grid-template-columns: 1fr;
+        gap: 3rem 0;
+        padding: 3rem 1.5rem 4rem;
+      }
+
+      .contact-divider-v { display: none; }
+
+      .contact-details { padding-right: 0; }
+      .contact-form-wrap { padding-left: 0; }
+
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+
+      footer { flex-direction: column; align-items: flex-start; }
+      .footer-info { text-align: left; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-bar { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="scroll-bar" aria-hidden="true"></div>
+
+  <!-- ─── Header ─── -->
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="wordmark" aria-label="NOHO NATURE">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" role="img" aria-hidden="true">
+          <g transform="translate(160,10)" color="#2A2724">
+            <path d="M100,132 C99,110 99,92 100,58" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+            <path d="M100.0,66.0 Q108.8,48.4 100.0,34.0 Q91.2,48.4 100.0,66.0 Z" fill="currentColor"/>
+            <path d="M100.0,66.0 Q100.5,48.2 87.7,39.7 Q86.0,54.9 100.0,66.0 Z" fill="currentColor"/>
+            <path d="M100.0,66.0 Q114.0,54.9 112.3,39.7 Q99.5,48.2 100.0,66.0 Z" fill="currentColor"/>
+            <path d="M100.0,66.0 Q94.5,52.0 81.6,50.6 Q85.3,63.0 100.0,66.0 Z" fill="currentColor"/>
+            <path d="M100.0,66.0 Q114.7,63.0 118.4,50.6 Q105.5,52.0 100.0,66.0 Z" fill="currentColor"/>
+            <path d="M100.0,34.0 Q104.4,26.9 100.0,21.0 Q95.6,26.9 100.0,34.0 Z" fill="currentColor"/>
+            <path d="M100,74 Q78,70 66,58" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M84.7,63.8 Q91.4,54.7 85.3,46.8 Q78.6,54.2 84.7,63.8 Z" fill="currentColor"/>
+            <path d="M74.5,59.0 Q78.9,50.1 72.4,44.1 Q67.8,51.6 74.5,59.0 Z" fill="currentColor"/>
+            <path d="M66.0,58.0 Q64.5,46.3 54.4,44.2 Q54.7,54.5 66.0,58.0 Z" fill="currentColor"/>
+            <path d="M100,74 Q122,70 134,58" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M115.3,63.8 Q126.1,60.4 125.8,50.4 Q116.0,52.5 115.3,63.8 Z" fill="currentColor"/>
+            <path d="M125.5,59.0 Q134.3,54.3 132.5,45.8 Q124.4,49.1 125.5,59.0 Z" fill="currentColor"/>
+            <path d="M134.0,58.0 Q145.3,54.5 145.6,44.2 Q135.5,46.3 134.0,58.0 Z" fill="currentColor"/>
+            <path d="M100,100 Q66,100 48,84" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M74.0,90.0 Q80.9,81.9 75.7,74.1 Q69.0,80.6 74.0,90.0 Z" fill="currentColor"/>
+            <path d="M58.4,85.2 Q63.4,77.1 57.4,71.2 Q52.3,77.9 58.4,85.2 Z" fill="currentColor"/>
+            <path d="M48.0,84.0 Q43.8,73.7 34.1,74.2 Q36.9,83.6 48.0,84.0 Z" fill="currentColor"/>
+            <path d="M82,116 Q60,116 56,104" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="56" cy="104" r="3.4" fill="currentColor"/>
+            <path d="M100,100 Q134,100 152,84" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M126.0,90.0 Q136.6,88.9 138.3,79.7 Q128.9,79.7 126.0,90.0 Z" fill="currentColor"/>
+            <path d="M141.6,85.2 Q150.8,82.9 150.6,74.5 Q142.3,75.7 141.6,85.2 Z" fill="currentColor"/>
+            <path d="M152.0,84.0 Q163.1,83.6 165.9,74.2 Q156.2,73.7 152.0,84.0 Z" fill="currentColor"/>
+            <path d="M118,116 Q140,116 144,104" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="144" cy="104" r="3.4" fill="currentColor"/>
+          </g>
+          <text x="260" y="218" text-anchor="middle" fill="#2A2724" font-family="'Cormorant Garamond', 'Times New Roman', serif" font-size="86" letter-spacing="6">NOHO</text>
+          <text x="260" y="262" text-anchor="middle" fill="#2A2724" font-family="'Jost', 'Helvetica Neue', sans-serif" font-size="34" letter-spacing="16">NATURE</text>
+        </svg>
+      </a>
+
+      <nav aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </nav>
+
+      <button class="hamburger" aria-label="Open menu" onclick="document.querySelector('.mobile-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Mobile">
+      <a href="index.html"    onclick="this.closest('.mobile-nav').classList.remove('open')">Home</a>
+      <a href="products.html" onclick="this.closest('.mobile-nav').classList.remove('open')">Products</a>
+      <a href="contact.html"  onclick="this.closest('.mobile-nav').classList.remove('open')">Contact</a>
+    </nav>
+  </header>
+
+
+  <!-- ─── Page heading ─── -->
+  <div class="page-intro">
+    <h1>Get in Touch</h1>
+    <p>Wholesale &nbsp;·&nbsp; Distribution &nbsp;·&nbsp; Retail Partnerships</p>
+  </div>
+
+
+  <!-- ─── Botanical divider ─── -->
+  <div class="section-divider" aria-hidden="true">
+    <span class="divider-line"></span>
+    <svg class="divider-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" aria-hidden="true">
+      <path d="M100,132 C99,110 99,92 100,58" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+      <path d="M100.0,66.0 Q108.8,48.4 100.0,34.0 Q91.2,48.4 100.0,66.0 Z" fill="currentColor"/>
+      <path d="M100.0,66.0 Q100.5,48.2 87.7,39.7 Q86.0,54.9 100.0,66.0 Z" fill="currentColor"/>
+      <path d="M100.0,66.0 Q114.0,54.9 112.3,39.7 Q99.5,48.2 100.0,66.0 Z" fill="currentColor"/>
+      <path d="M100.0,66.0 Q94.5,52.0 81.6,50.6 Q85.3,63.0 100.0,66.0 Z" fill="currentColor"/>
+      <path d="M100.0,66.0 Q114.7,63.0 118.4,50.6 Q105.5,52.0 100.0,66.0 Z" fill="currentColor"/>
+      <path d="M100.0,34.0 Q104.4,26.9 100.0,21.0 Q95.6,26.9 100.0,34.0 Z" fill="currentColor"/>
+      <path d="M100,74 Q78,70 66,58" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M84.7,63.8 Q91.4,54.7 85.3,46.8 Q78.6,54.2 84.7,63.8 Z" fill="currentColor"/>
+      <path d="M74.5,59.0 Q78.9,50.1 72.4,44.1 Q67.8,51.6 74.5,59.0 Z" fill="currentColor"/>
+      <path d="M66.0,58.0 Q64.5,46.3 54.4,44.2 Q54.7,54.5 66.0,58.0 Z" fill="currentColor"/>
+      <path d="M100,74 Q122,70 134,58" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M115.3,63.8 Q126.1,60.4 125.8,50.4 Q116.0,52.5 115.3,63.8 Z" fill="currentColor"/>
+      <path d="M125.5,59.0 Q134.3,54.3 132.5,45.8 Q124.4,49.1 125.5,59.0 Z" fill="currentColor"/>
+      <path d="M134.0,58.0 Q145.3,54.5 145.6,44.2 Q135.5,46.3 134.0,58.0 Z" fill="currentColor"/>
+      <path d="M100,100 Q66,100 48,84" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M74.0,90.0 Q80.9,81.9 75.7,74.1 Q69.0,80.6 74.0,90.0 Z" fill="currentColor"/>
+      <path d="M58.4,85.2 Q63.4,77.1 57.4,71.2 Q52.3,77.9 58.4,85.2 Z" fill="currentColor"/>
+      <path d="M48.0,84.0 Q43.8,73.7 34.1,74.2 Q36.9,83.6 48.0,84.0 Z" fill="currentColor"/>
+      <path d="M82,116 Q60,116 56,104" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="56" cy="104" r="3.4" fill="currentColor"/>
+      <path d="M100,100 Q134,100 152,84" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M126.0,90.0 Q136.6,88.9 138.3,79.7 Q128.9,79.7 126.0,90.0 Z" fill="currentColor"/>
+      <path d="M141.6,85.2 Q150.8,82.9 150.6,74.5 Q142.3,75.7 141.6,85.2 Z" fill="currentColor"/>
+      <path d="M152.0,84.0 Q163.1,83.6 165.9,74.2 Q156.2,73.7 152.0,84.0 Z" fill="currentColor"/>
+      <path d="M118,116 Q140,116 144,104" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="144" cy="104" r="3.4" fill="currentColor"/>
+    </svg>
+    <span class="divider-line"></span>
+  </div>
+
+
+  <!-- ─── Contact body ─── -->
+  <div class="contact-body">
+
+    <!-- Left: contact details -->
+    <address class="contact-details" style="font-style: normal;">
+      <h2>NOHO NATURE LLC</h2>
+
+      <p class="detail-label">Location</p>
+      <p class="detail-value">Los Angeles, CA</p>
+
+      <p class="detail-label">Email</p>
+      <p class="detail-value">
+        <a href="mailto:info@nohonature.com">info@nohonature.com</a>
+      </p>
+
+      <p class="detail-label">Phone</p>
+      <p class="detail-value">
+        <a href="tel:7472955839">(747) 295-5839</a>
+      </p>
+
+      <div class="detail-rule"></div>
+    </address>
+
+    <!-- Vertical hairline -->
+    <div class="contact-divider-v" aria-hidden="true"></div>
+
+    <!-- Right: inquiry form -->
+    <div class="contact-form-wrap">
+      <p class="form-note">For wholesale, distribution, and retail partnership inquiries.</p>
+
+      <form
+        class="contact-form"
+        action="https://formspree.io/f/mbgjwzaw"
+        method="POST"
+      >
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="field">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" placeholder="Company name" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(000) 000-0000" />
+          </div>
+        </div>
+
+        <div class="field field-message">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your business and what you're looking for." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Send Inquiry</button>
+      </form>
+    </div>
+
+  </div>
+
+
+  <!-- ─── Wholesale Band ─── -->
+  <section class="wholesale" aria-label="Products">
+    <h2>Five flavors. One standard.</h2>
+    <p>Explore the full range</p>
+    <a href="products.html" class="btn-outline">View Products</a>
+  </section>
+
+
+  <!-- ─── Footer ─── -->
+  <footer aria-label="Site footer">
+    <span class="footer-wordmark">Noho Nature</span>
+    <address class="footer-info" style="font-style: normal;">
+      NOHO NATURE LLC &mdash; Los Angeles, CA<br />
+      <a href="mailto:info@nohonature.com">info@nohonature.com</a> &nbsp;&middot;&nbsp; <a href="tel:7472955839">(747) 295-5839</a>
+    </address>
+  </footer>
+
+
+  <script>
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ── Scroll progress ──────────────────────────────────────────
+    const scrollBar = document.querySelector('.scroll-bar');
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const max = document.body.scrollHeight - window.innerHeight;
+          if (max > 0) scrollBar.style.width = (window.scrollY / max * 100) + '%';
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
