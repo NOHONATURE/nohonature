@@ -1,7 +1,7 @@
 backend:
   name: github
   branch: main
-  repo: nohonature/nohonature
+  repo: NOHONATURE/NOHONATURE
   base_url: https://noho-oauth.plain-mountain-4553.workers.dev
   auth_endpoint: /auth
 
