@@ -12,8 +12,61 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
-      - file: "content/home.md"
+      - file: "_data/home.json"
         label: "Home"
         name: "home"
         fields:
+          - { label: "Hero Photo", name: "hero_image", widget: "image" }
+          - { label: "Hero Photo Description", name: "hero_alt", widget: "string", hint: "Short description of the photo. Used by Google and screen readers." }
           - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Intro Paragraph", name: "intro", widget: "text" }
+          - label: "Claims"
+            name: "claims"
+            widget: "list"
+            hint: "Short badges under the hero, e.g. No Sugar Added. Make sure these match the bottle labels."
+            field: { label: "Claim", name: "claim", widget: "string" }
+          - { label: "Brand Statement", name: "brand_statement", widget: "text" }
+          - { label: "Products Section Heading", name: "products_heading", widget: "string" }
+          - { label: "Wholesale Banner Heading", name: "cta_heading", widget: "string", hint: "Also shown on the Products page." }
+          - { label: "Wholesale Banner Text", name: "cta_text", widget: "string" }
+
+      - file: "_data/products.json"
+        label: "Products"
+        name: "products"
+        fields:
+          - { label: "Page Heading", name: "heading", widget: "string" }
+          - label: "Tagline Items"
+            name: "tags"
+            widget: "list"
+            field: { label: "Item", name: "tag", widget: "string" }
+          - { label: "Red Banner Text", name: "pause_text", widget: "string", hint: "Appears after the third product." }
+          - label: "Products"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}}"
+            hint: "Drag to reorder. Products appear on the Home page and the Products page."
+            fields:
+              - { label: "Flavor Name", name: "name", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Bottle Photo", name: "photo", widget: "image", hint: "Use a transparent PNG of the bottle, same style as the others." }
+              - label: "Sizes"
+                name: "sizes"
+                widget: "list"
+                field: { label: "Size", name: "size", widget: "string" }
+
+      - file: "_data/contact.json"
+        label: "Contact"
+        name: "contact"
+        fields:
+          - { label: "Page Heading", name: "heading", widget: "string" }
+          - label: "Tagline Items"
+            name: "tags"
+            widget: "list"
+            field: { label: "Item", name: "tag", widget: "string" }
+          - { label: "Company Name", name: "company", widget: "string" }
+          - { label: "Location", name: "location", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string", hint: "Format like (747) 295-5839" }
+          - { label: "Form Note", name: "form_note", widget: "string" }
+          - { label: "Bottom Banner Heading", name: "cta_heading", widget: "string" }
+          - { label: "Bottom Banner Text", name: "cta_text", widget: "string" }

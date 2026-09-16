@@ -1,3 +1,6 @@
+---
+permalink: products.html
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -488,25 +491,26 @@
 
   <!-- ─── Page intro ─── -->
   <div class="page-intro">
-    <h1>Our Range</h1>
-    <p>100% Natural &nbsp;·&nbsp; No Sugar Added &nbsp;·&nbsp; Made from Premium Fruits</p>
+    <h1>{{ products.heading }}</h1>
+    <p>{% for tag in products.tags %}{{ tag }}{% if not loop.last %} &nbsp;·&nbsp; {% endif %}{% endfor %}</p>
   </div>
 
 
-  <!-- ─── 01 Pomegranate ─── -->
-  <section class="flavor-section" id="pomegranate" aria-label="Pomegranate">
+  {%- for item in products.items %}
+  <section class="flavor-section" id="{{ item.name | slugify }}" aria-label="{{ item.name }}">
     <div class="flavor-image">
-      <img src="images/pomegranate-removebg-preview.png" alt="NOHO NATURE Pomegranate Juice bottle" />
+      <img src="{{ item.photo }}" alt="NOHO NATURE {{ item.name }} Juice bottle" />
     </div>
     <div class="flavor-copy">
-      <p class="flavor-number">01</p>
-      <h2 class="flavor-name">Pomegranate</h2>
-      <p class="flavor-desc">Deep, rich, and naturally complex — pressed from whole pomegranates at peak ripeness.</p>
+      <p class="flavor-number">{{ loop.index | pad2 }}</p>
+      <h2 class="flavor-name">{{ item.name }}</h2>
+      <p class="flavor-desc">{{ item.description }}</p>
       <div class="flavor-rule"></div>
-      <ul class="flavor-sizes"><li>27 FL OZ (810 mL)</li><li>9 FL OZ (265 mL)</li></ul>
+      <ul class="flavor-sizes">{% for size in item.sizes %}<li>{{ size }}</li>{% endfor %}</ul>
     </div>
   </section>
-
+  {%- if not loop.last %}
+  {%- if loop.index == 1 %}
   <!-- Botanical divider -->
   <div class="section-divider" aria-hidden="true">
     <span class="divider-line"></span>
@@ -529,93 +533,12 @@
     </svg>
     <span class="divider-line"></span>
   </div>
-
-
-  <!-- ─── 02 Orange ─── -->
-  <section class="flavor-section" id="orange" aria-label="Orange">
-    <div class="flavor-image">
-      <img src="images/orange-removebg-preview.png" alt="NOHO NATURE Orange Juice bottle" />
-    </div>
-    <div class="flavor-copy">
-      <p class="flavor-number">02</p>
-      <h2 class="flavor-name">Orange</h2>
-      <p class="flavor-desc">Bright and clean, with the natural sweetness of freshly squeezed citrus.</p>
-      <div class="flavor-rule"></div>
-      <ul class="flavor-sizes"><li>27 FL OZ (810 mL)</li><li>9 FL OZ (265 mL)</li></ul>
-    </div>
-  </section>
-
-  <!-- Botanical divider -->
-  <div class="section-divider" aria-hidden="true">
-    <span class="divider-line"></span>
-    <svg class="divider-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" aria-hidden="true">
-      <path d="M100,132 C99,110 99,92 100,58" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
-      <path d="M100.0,66.0 Q108.8,48.4 100.0,34.0 Q91.2,48.4 100.0,66.0 Z" fill="currentColor"/>
-      <path d="M100.0,66.0 Q100.5,48.2 87.7,39.7 Q86.0,54.9 100.0,66.0 Z" fill="currentColor"/>
-      <path d="M100.0,66.0 Q114.0,54.9 112.3,39.7 Q99.5,48.2 100.0,66.0 Z" fill="currentColor"/>
-      <path d="M100.0,66.0 Q94.5,52.0 81.6,50.6 Q85.3,63.0 100.0,66.0 Z" fill="currentColor"/>
-      <path d="M100.0,66.0 Q114.7,63.0 118.4,50.6 Q105.5,52.0 100.0,66.0 Z" fill="currentColor"/>
-      <path d="M100.0,34.0 Q104.4,26.9 100.0,21.0 Q95.6,26.9 100.0,34.0 Z" fill="currentColor"/>
-      <path d="M100,74 Q78,70 66,58" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-      <path d="M84.7,63.8 Q91.4,54.7 85.3,46.8 Q78.6,54.2 84.7,63.8 Z" fill="currentColor"/>
-      <path d="M74.5,59.0 Q78.9,50.1 72.4,44.1 Q67.8,51.6 74.5,59.0 Z" fill="currentColor"/>
-      <path d="M66.0,58.0 Q64.5,46.3 54.4,44.2 Q54.7,54.5 66.0,58.0 Z" fill="currentColor"/>
-      <path d="M100,74 Q122,70 134,58" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-      <path d="M115.3,63.8 Q126.1,60.4 125.8,50.4 Q116.0,52.5 115.3,63.8 Z" fill="currentColor"/>
-      <path d="M125.5,59.0 Q134.3,54.3 132.5,45.8 Q124.4,49.1 125.5,59.0 Z" fill="currentColor"/>
-      <path d="M134.0,58.0 Q145.3,54.5 145.6,44.2 Q135.5,46.3 134.0,58.0 Z" fill="currentColor"/>
-      <path d="M100,100 Q66,100 48,84" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-      <path d="M74.0,90.0 Q80.9,81.9 75.7,74.1 Q69.0,80.6 74.0,90.0 Z" fill="currentColor"/>
-      <path d="M58.4,85.2 Q63.4,77.1 57.4,71.2 Q52.3,77.9 58.4,85.2 Z" fill="currentColor"/>
-      <path d="M48.0,84.0 Q43.8,73.7 34.1,74.2 Q36.9,83.6 48.0,84.0 Z" fill="currentColor"/>
-      <path d="M82,116 Q60,116 56,104" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-      <circle cx="56" cy="104" r="3.4" fill="currentColor"/>
-      <path d="M100,100 Q134,100 152,84" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-      <path d="M126.0,90.0 Q136.6,88.9 138.3,79.7 Q128.9,79.7 126.0,90.0 Z" fill="currentColor"/>
-      <path d="M141.6,85.2 Q150.8,82.9 150.6,74.5 Q142.3,75.7 141.6,85.2 Z" fill="currentColor"/>
-      <path d="M152.0,84.0 Q163.1,83.6 165.9,74.2 Q156.2,73.7 152.0,84.0 Z" fill="currentColor"/>
-      <path d="M118,116 Q140,116 144,104" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-      <circle cx="144" cy="104" r="3.4" fill="currentColor"/>
-    </svg>
-    <span class="divider-line"></span>
-  </div>
-
-
-  <!-- ─── 03 Cherry ─── -->
-  <section class="flavor-section" id="cherry" aria-label="Cherry">
-    <div class="flavor-image">
-      <img src="images/cherry-removebg-preview.png" alt="NOHO NATURE Cherry Juice bottle" />
-    </div>
-    <div class="flavor-copy">
-      <p class="flavor-number">03</p>
-      <h2 class="flavor-name">Cherry</h2>
-      <p class="flavor-desc">Bold and smooth, with a depth of flavor that only whole-fruit pressing delivers.</p>
-      <div class="flavor-rule"></div>
-      <ul class="flavor-sizes"><li>27 FL OZ (810 mL)</li><li>9 FL OZ (265 mL)</li></ul>
-    </div>
-  </section>
-
-
+  {%- elif loop.index == 3 %}
   <!-- ─── Red pause ─── -->
   <section class="flavor-pause" aria-label="Brand statement">
-    <p>Nature's goodness in every bottle.</p>
+    <p>{{ products.pause_text }}</p>
   </section>
-
-
-  <!-- ─── 04 Apple ─── -->
-  <section class="flavor-section" id="apple" aria-label="Apple">
-    <div class="flavor-image">
-      <img src="images/apple-removebg-preview.png" alt="NOHO NATURE Apple Juice bottle" />
-    </div>
-    <div class="flavor-copy">
-      <p class="flavor-number">04</p>
-      <h2 class="flavor-name">Apple</h2>
-      <p class="flavor-desc">Crisp and balanced, made from premium apples with no added sugar or concentrate.</p>
-      <div class="flavor-rule"></div>
-      <ul class="flavor-sizes"><li>27 FL OZ (810 mL)</li><li>9 FL OZ (265 mL)</li></ul>
-    </div>
-  </section>
-
+  {%- else %}
   <!-- Botanical divider -->
   <div class="section-divider" aria-hidden="true">
     <span class="divider-line"></span>
@@ -650,27 +573,13 @@
     </svg>
     <span class="divider-line"></span>
   </div>
-
-
-  <!-- ─── 05 Tomato ─── -->
-  <section class="flavor-section" id="tomato" aria-label="Tomato">
-    <div class="flavor-image">
-      <img src="images/tomato-removebg-preview.png" alt="NOHO NATURE Tomato Juice bottle" />
-    </div>
-    <div class="flavor-copy">
-      <p class="flavor-number">05</p>
-      <h2 class="flavor-name">Tomato</h2>
-      <p class="flavor-desc">Savory and smooth, with the concentrated character of vine-ripened tomatoes.</p>
-      <div class="flavor-rule"></div>
-      <ul class="flavor-sizes"><li>27 FL OZ (810 mL)</li><li>9 FL OZ (265 mL)</li></ul>
-    </div>
-  </section>
-
-
+  {%- endif %}
+  {%- endif %}
+  {%- endfor %}
   <!-- ─── Wholesale ─── -->
   <section class="wholesale" id="contact" aria-label="Wholesale inquiries">
-    <h2>Built for the retail shelf.</h2>
-    <p>For wholesale inquiries, please contact us</p>
+    <h2>{{ home.cta_heading }}</h2>
+    <p>{{ home.cta_text }}</p>
     <a href="contact.html" class="btn-outline">Get in Touch</a>
   </section>
 
@@ -679,8 +588,8 @@
   <footer aria-label="Site footer">
     <span class="footer-wordmark">Noho Nature</span>
     <address class="footer-info" style="font-style: normal;">
-      NOHO NATURE LLC &mdash; Los Angeles, CA<br />
-      <a href="mailto:info@nohonature.com">info@nohonature.com</a> &nbsp;&middot;&nbsp; <a href="tel:7472955839">(747) 295-5839</a>
+      {{ contact.company }} &mdash; {{ contact.location }}<br />
+      <a href="mailto:{{ contact.email }}">{{ contact.email }}</a> &nbsp;&middot;&nbsp; <a href="tel:{{ contact.phone | telLink }}">{{ contact.phone }}</a>
     </address>
   </footer>
 

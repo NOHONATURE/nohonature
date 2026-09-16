@@ -1,3 +1,6 @@
+---
+permalink: index.html
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -780,8 +783,8 @@
 
       <div class="hero-image">
         <img
-          src="images/hero.png"
-          alt="NOHO NATURE Pomegranate Juice — 810 ml bottle"
+          src="{{ home.hero_image }}"
+          alt="{{ home.hero_alt }}"
           width="600"
           height="900"
         />
@@ -789,20 +792,19 @@
 
       <div class="hero-copy">
         <h1 class="hero-headline">
-          Juice as nature intended it.
+          {{ home.headline }}
         </h1>
         <p class="hero-body">
-          NOHO NATURE brings premium single-fruit juices to retail shelves — nothing added, nothing removed. Available in 810 ml and 265 ml formats for wholesale and distribution partners.
+          {{ home.intro }}
         </p>
       </div>
 
     </div>
 
     <div class="claims" role="list">
-      <div class="claim" role="listitem">100% Natural Juice</div>
-      <div class="claim" role="listitem">No Sugar Added</div>
-      <div class="claim" role="listitem">No Artificial Colors</div>
-      <div class="claim" role="listitem">Made from Premium Fruits</div>
+      {%- for claim in home.claims %}
+      <div class="claim" role="listitem">{{ claim }}</div>
+      {%- endfor %}
     </div>
 
   </section>
@@ -841,7 +843,7 @@
         <circle cx="144" cy="104" r="3.4" fill="currentColor"/>
       </svg>
       <div class="brand-rule" aria-hidden="true"></div>
-      <p>Pure. Natural. Refreshing. We source only premium fruit, press it simply, and let the flavor speak for itself.</p>
+      <p>{{ home.brand_statement }}</p>
     </div>
   </section>
 
@@ -851,75 +853,25 @@
     <div class="products-section">
 
       <div class="section-heading">
-        <h2>Five Flavors, One Standard</h2>
+        <h2>{{ home.products_heading }}</h2>
       </div>
 
       <div class="products-grid">
 
-        <a class="product-card" href="products.html#pomegranate">
+        {%- for item in products.items %}
+        <a class="product-card" href="products.html#{{ item.name | slugify }}">
           <div class="bottle-wrap">
             <img
-              src="images/pomegranate-removebg-preview.png"
-              alt="NOHO NATURE Pomegranate Juice bottle"
+              src="{{ item.photo }}"
+              alt="NOHO NATURE {{ item.name }} Juice bottle"
               width="140"
               height="187"
             />
           </div>
-          <p class="flavor">Pomegranate</p>
-          <p class="sizes"><span>27 FL OZ (810 mL)</span><span>9 FL OZ (265 mL)</span></p>
+          <p class="flavor">{{ item.name }}</p>
+          <p class="sizes">{% for size in item.sizes %}<span>{{ size }}</span>{% endfor %}</p>
         </a>
-
-        <a class="product-card" href="products.html#orange">
-          <div class="bottle-wrap">
-            <img
-              src="images/orange-removebg-preview.png"
-              alt="NOHO NATURE Orange Juice bottle"
-              width="140"
-              height="187"
-            />
-          </div>
-          <p class="flavor">Orange</p>
-          <p class="sizes"><span>27 FL OZ (810 mL)</span><span>9 FL OZ (265 mL)</span></p>
-        </a>
-
-        <a class="product-card" href="products.html#cherry">
-          <div class="bottle-wrap">
-            <img
-              src="images/cherry-removebg-preview.png"
-              alt="NOHO NATURE Cherry Juice bottle"
-              width="140"
-              height="187"
-            />
-          </div>
-          <p class="flavor">Cherry</p>
-          <p class="sizes"><span>27 FL OZ (810 mL)</span><span>9 FL OZ (265 mL)</span></p>
-        </a>
-
-        <a class="product-card" href="products.html#apple">
-          <div class="bottle-wrap">
-            <img
-              src="images/apple-removebg-preview.png"
-              alt="NOHO NATURE Apple Juice bottle"
-              width="140"
-              height="187"
-            />
-          </div>
-          <p class="flavor">Apple</p>
-          <p class="sizes"><span>27 FL OZ (810 mL)</span><span>9 FL OZ (265 mL)</span></p>
-        </a>
-
-        <a class="product-card" href="products.html#tomato">
-          <div class="bottle-wrap">
-            <img
-              src="images/tomato-removebg-preview.png"
-              alt="NOHO NATURE Tomato Juice bottle"
-              width="140"
-              height="187"
-            />
-          </div>
-          <p class="flavor">Tomato</p>
-          <p class="sizes"><span>27 FL OZ (810 mL)</span><span>9 FL OZ (265 mL)</span></p>
-        </a>
+        {%- endfor %}
 
       </div>
     </div>
@@ -928,8 +880,8 @@
 
   <!-- ─── Wholesale Band ─── -->
   <section class="wholesale" id="contact" aria-label="Wholesale inquiries">
-    <h2>Built for the retail shelf.</h2>
-    <p>For wholesale inquiries, please contact us</p>
+    <h2>{{ home.cta_heading }}</h2>
+    <p>{{ home.cta_text }}</p>
     <a href="contact.html" class="btn-outline">Get in Touch</a>
   </section>
 
@@ -938,8 +890,8 @@
   <footer aria-label="Site footer">
     <span class="footer-wordmark">Noho Nature</span>
     <address class="footer-info" style="font-style: normal;">
-      NOHO NATURE LLC &mdash; Los Angeles, CA<br />
-      <a href="mailto:info@nohonature.com">info@nohonature.com</a> &nbsp;&middot;&nbsp; <a href="tel:7472955839">(747) 295-5839</a>
+      {{ contact.company }} &mdash; {{ contact.location }}<br />
+      <a href="mailto:{{ contact.email }}">{{ contact.email }}</a> &nbsp;&middot;&nbsp; <a href="tel:{{ contact.phone | telLink }}">{{ contact.phone }}</a>
     </address>
   </footer>
 

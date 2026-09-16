@@ -1,0 +1,56 @@
+{
+  "heading": "Our Range",
+  "tags": [
+    "100% Natural",
+    "No Sugar Added",
+    "Made from Premium Fruits"
+  ],
+  "pause_text": "Nature's goodness in every bottle.",
+  "items": [
+    {
+      "name": "Pomegranate",
+      "description": "Deep, rich, and naturally complex — pressed from whole pomegranates at peak ripeness.",
+      "photo": "/images/pomegranate-removebg-preview.png",
+      "sizes": [
+        "27 FL OZ (810 mL)",
+        "9 FL OZ (265 mL)"
+      ]
+    },
+    {
+      "name": "Orange",
+      "description": "Bright and clean, with the natural sweetness of freshly squeezed citrus.",
+      "photo": "/images/orange-removebg-preview.png",
+      "sizes": [
+        "27 FL OZ (810 mL)",
+        "9 FL OZ (265 mL)"
+      ]
+    },
+    {
+      "name": "Cherry",
+      "description": "Bold and smooth, with a depth of flavor that only whole-fruit pressing delivers.",
+      "photo": "/images/cherry-removebg-preview.png",
+      "sizes": [
+        "27 FL OZ (810 mL)",
+        "9 FL OZ (265 mL)"
+      ]
+    },
+    {
+      "name": "Apple",
+      "description": "Crisp and balanced, made from premium apples with no added sugar or concentrate.",
+      "photo": "/images/apple-removebg-preview.png",
+      "sizes": [
+        "27 FL OZ (810 mL)",
+        "9 FL OZ (265 mL)"
+      ]
+    },
+    {
+      "name": "Tomato",
+      "description": "Savory and smooth, with the concentrated character of vine-ripened tomatoes.",
+      "photo": "/images/tomato-removebg-preview.png",
+      "sizes": [
+        "27 FL OZ (810 mL)",
+        "9 FL OZ (265 mL)"
+      ]
+    }
+  ]
+}

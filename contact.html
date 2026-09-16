@@ -1,3 +1,6 @@
+---
+permalink: contact.html
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -521,8 +524,8 @@
 
   <!-- ─── Page heading ─── -->
   <div class="page-intro">
-    <h1>Get in Touch</h1>
-    <p>Wholesale &nbsp;·&nbsp; Distribution &nbsp;·&nbsp; Retail Partnerships</p>
+    <h1>{{ contact.heading }}</h1>
+    <p>{% for tag in contact.tags %}{{ tag }}{% if not loop.last %} &nbsp;·&nbsp; {% endif %}{% endfor %}</p>
   </div>
 
 
@@ -567,19 +570,19 @@
 
     <!-- Left: contact details -->
     <address class="contact-details" style="font-style: normal;">
-      <h2>NOHO NATURE LLC</h2>
+      <h2>{{ contact.company }}</h2>
 
       <p class="detail-label">Location</p>
-      <p class="detail-value">Los Angeles, CA</p>
+      <p class="detail-value">{{ contact.location }}</p>
 
       <p class="detail-label">Email</p>
       <p class="detail-value">
-        <a href="mailto:info@nohonature.com">info@nohonature.com</a>
+        <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
       </p>
 
       <p class="detail-label">Phone</p>
       <p class="detail-value">
-        <a href="tel:7472955839">(747) 295-5839</a>
+        <a href="tel:{{ contact.phone | telLink }}">{{ contact.phone }}</a>
       </p>
 
       <div class="detail-rule"></div>
@@ -590,7 +593,7 @@
 
     <!-- Right: inquiry form -->
     <div class="contact-form-wrap">
-      <p class="form-note">For wholesale, distribution, and retail partnership inquiries.</p>
+      <p class="form-note">{{ contact.form_note }}</p>
 
       <form
         class="contact-form"
@@ -633,8 +636,8 @@
 
   <!-- ─── Wholesale Band ─── -->
   <section class="wholesale" aria-label="Products">
-    <h2>Five flavors. One standard.</h2>
-    <p>Explore the full range</p>
+    <h2>{{ contact.cta_heading }}</h2>
+    <p>{{ contact.cta_text }}</p>
     <a href="products.html" class="btn-outline">View Products</a>
   </section>
 
@@ -643,8 +646,8 @@
   <footer aria-label="Site footer">
     <span class="footer-wordmark">Noho Nature</span>
     <address class="footer-info" style="font-style: normal;">
-      NOHO NATURE LLC &mdash; Los Angeles, CA<br />
-      <a href="mailto:info@nohonature.com">info@nohonature.com</a> &nbsp;&middot;&nbsp; <a href="tel:7472955839">(747) 295-5839</a>
+      {{ contact.company }} &mdash; {{ contact.location }}<br />
+      <a href="mailto:{{ contact.email }}">{{ contact.email }}</a> &nbsp;&middot;&nbsp; <a href="tel:{{ contact.phone | telLink }}">{{ contact.phone }}</a>
     </address>
   </footer>
 
