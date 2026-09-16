@@ -9,11 +9,11 @@ media_folder: "images"
 public_folder: "/images"
 
 collections:
-  - name: "products"
-    label: "Products"
+  - name: "pages"
+    label: "Pages"
     files:
-      - file: "products.html"
-        label: "Products Page"
-        name: "products"
+      - file: "content/home.md"
+        label: "Home"
+        name: "home"
         fields:
-          - { label: "Page Content", name: "body", widget: "text" }
+          - { label: "Headline", name: "headline", widget: "string" }
